@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Get Insights of an organization"""
+type Insights {
+  """List of repositories with their total commits"""
+  orgCommits: [OrgCommits!]!
+
+  """Organization name"""
+  organizationName: String!
+
+  """List of users with their contributions"""
+  userContributions: [UserContributions!]!
+}
+
+"""Get organization total commits"""
+type OrgCommits {
+  """Total commits"""
+  commits: Int!
+
+  """Repository name"""
+  repoName: String!
+}
+
+type Query {
+  """Get insights for the organization"""
+  getInsights: Insights!
+}
+
+"""Get list of users of an organization with their contributions"""
+type UserContributions {
+  """Number of contributions"""
+  contributions: Int!
+
+  """User name"""
+  userName: String!
+}
