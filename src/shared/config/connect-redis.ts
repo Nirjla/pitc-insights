@@ -1,6 +1,6 @@
 //  NOTE : ioredis is better than node-redis or redis as it supports better features and is more robust for production use cases lso dont have to install types separately
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
-import Redis from 'ioredis';
+import { Redis } from 'ioredis';
 
 @Injectable()
 export class ConnectRedis implements OnModuleDestroy {
@@ -19,7 +19,7 @@ export class ConnectRedis implements OnModuleDestroy {
                   console.log('✅ Redis connected successfully');
             });
 
-            this.redisClient.on('error', (error) => {
+            this.redisClient.on('error', (error: Error) => {
                   console.error('❌ Redis connection error:', error.message);
             });
       }
