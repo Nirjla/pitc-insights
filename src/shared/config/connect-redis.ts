@@ -61,6 +61,15 @@ export class ConnectRedis implements OnModuleDestroy {
             return (await this.redisClient.exists(key)) === 1;
       }
 
+      async ping(): Promise<void> {
+            try {
+                  const result = await this.redisClient.ping();
+                  console.log(`✅ Redis keep-alive ping successful: ${result}`);
+            } catch (error) {
+                  console.error(`❌ Redis keep-alive ping failed: ${error instanceof Error ? error.message : error}`);
+            }
+      }
+
       // Cleanup on module destroy
       async onModuleDestroy(): Promise<void> {
             await this.redisClient.quit();

@@ -8,6 +8,8 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { InsightsModule } from './modules/insights/insights.module';
 import { RedisCacheOptions } from './shared/config/redis-cache.config';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { CronController } from './modules/insights/cron/cron.controller';
+import { CronService } from './modules/insights/cron/cron.service';
 
 @Module({
   imports: [
@@ -32,7 +34,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
     InsightsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, CronController],
+  providers: [AppService, CronService],
 })
 export class AppModule { }
